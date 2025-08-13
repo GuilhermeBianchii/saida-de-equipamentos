@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Equipamentos</title>
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__fadeInDown text-center">Gestão de Equipamentos</h1>
+        <form id="equipamentoForm" class="form-card animate__animated animate__fadeInUp">
+            <h2>Cadastro de Equipamento</h2>
+            <div class="form-row">
+                <label>Nome*<input type="text" id="nome" required></label>
+                <label>Nº Ordem de Serviço*<input type="number" id="ordemServico" required></label>
+                <label>Nº Série*<input type="text" id="numeroSerie" maxlength="40" required></label>
+                <label>Nº Patrimônio*<input type="text" id="patrimonio" maxlength="15" required></label>
+            </div>
+            <div class="form-row">
+                <label>Fabricante*<input type="text" id="fabricante" required></label>
+                <label>Modelo*<input type="text" id="modelo" required></label>
+                <label>Data de Envio*<input type="date" id="dataEnvio" required></label>
+            </div>
+            <div class="form-row">
+                <label>Descrição do Problema*<textarea id="descricao" required></textarea></label>
+                <label>Empresa Responsável*<input type="text" id="empresa" required></label>
+            </div>
+            <div class="form-row">
+                <label>Técnico Responsável<input type="text" id="tecnico"></label>
+                <label>Observações<input type="text" id="observacoes"></label>
+            </div>
+            <div class="form-actions">
+                <button type="submit" id="btnSalvar">Salvar</button>
+                <button type="button" id="btnCancelar" style="display:none">Cancelar</button>
+            </div>
+        </form>
+        <div class="filtros-card animate__animated animate__fadeInUp">
+            <h2>Filtros</h2>
+            <div class="filtros-row">
+                <input type="text" id="filtroNome" placeholder="Nome do Equipamento">
+                <input type="text" id="filtroSerie" placeholder="Nº Série">
+                <input type="text" id="filtroPatrimonio" placeholder="Patrimônio">
+                <input type="text" id="filtroEmpresa" placeholder="Empresa Responsável">
+            </div>
+            <div class="form-actions">
+                <button id="btnFiltrar">Filtrar</button>
+                <button id="btnLimparFiltro">Limpar</button>
+            </div>
+        </div>
+        <div class="table-card animate__animated animate__fadeInUp">
+            <table id="tabelaEquipamentos">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Nº Série</th>
+                        <th>Data de Envio</th>
+                        <th>Descrição do Defeito</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Equipamentos serão listados aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content animate__animated animate__zoomIn">
+            <span id="modalClose" class="close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
