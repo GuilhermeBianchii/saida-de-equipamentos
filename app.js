@@ -66,6 +66,26 @@ function validarEquipamento(equipamento, ignorarIndex = null) {
     if (existe) {
         return 'Já existe um equipamento igual pendente para conserto.';
     }
+
+    // Verifica duplicidade de número de série pendente
+    const existeNumeroSeriePendente = equipamentos.some((eq, idx) =>
+        idx !== ignorarIndex &&
+        eq.numeroSerie === equipamento.numeroSerie &&
+        eq.status === 'Pendente'
+    );
+    if (existeNumeroSeriePendente) {
+        return 'Já existe um equipamento pendente com o mesmo número de série.';
+    }
+
+    // Verifica duplicidade de ordem de serviço
+    const existeOrdemServico = equipamentos.some((eq, idx) =>
+        idx !== ignorarIndex &&
+        eq.ordemServico === equipamento.ordemServico
+    );
+    if (existeOrdemServico) {
+        return 'Ordem de serviço já cadastrada.';
+    }
+
     return null;
 }
 
